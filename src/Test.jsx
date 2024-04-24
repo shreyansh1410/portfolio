@@ -8,6 +8,7 @@ const Test = () => {
       opacity: 1,
       x: 100,
       transition: { delay: 0.3 * i },
+      // transition: { staggerChildren: 0.5 },
     }),
     hidden: {
       opacity: 0,

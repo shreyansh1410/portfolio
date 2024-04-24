@@ -1,7 +1,11 @@
 import "./ToggleButton.scss";
 
-function ToggleButton() {
-  return <div className="toggleButton">ToggleButton</div>;
+function ToggleButton({ setOpen, open }) {
+  return (
+    <button className="toggleButton" onClick={() => setOpen(!open)}>
+      Button
+    </button>
+  );
 }
 
 export default ToggleButton;
