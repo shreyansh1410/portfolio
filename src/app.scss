@@ -25,6 +25,7 @@ html {
     width: 100vw;
     scroll-snap-align: center;
     overflow: hidden;
+    transition: transform 0.5s ease-in-out; 
   }
   
   @mixin mobile {
