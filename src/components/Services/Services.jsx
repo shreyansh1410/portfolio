@@ -42,56 +42,59 @@ function Services() {
         <div className="title">
           <img src="/people.webp" alt="people" />
           <h1>
-            <motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
+            <motion.b whileHover={{ color: "orange" }}>Unique</motion.b> Ideas
           </h1>
         </div>
         <div className="title title2">
           <h1>
-            <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
+            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b>{" "}
+            Business.
           </h1>
-          <button>WHAT WE DO?</button>
+          <button>WHAT I DO?</button>
         </div>
       </motion.div>
       <motion.div className="listContainer" variants={variants}>
         <motion.div className="box">
-          <h2>Branding</h2>
+          <h2>Development</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            tenetur est corrupti non adipisci minus quod consequuntur fugit
-            nostrum enim eaque itaque numquam error veritatis velit, libero
-            dolorum doloribus culpa.
+            I specialize in developing full-fledged websites from scratch using
+            the MERN stack (MongoDB, Express.js, React.js, and Node.js). My
+            expertise includes creating robust back-end infrastructures,
+            intuitive front-end interfaces, and seamless integration of
+            real-time features to deliver dynamic and responsive web
+            applications.
           </p>
-          <button>Go</button>
+          <button>
+            <a href="#Contact">Go</a>
+          </button>
         </motion.div>
         <motion.div className="box">
-          <h2>Branding</h2>
+          <h2>Designing</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            tenetur est corrupti non adipisci minus quod consequuntur fugit
-            nostrum enim eaque itaque numquam error veritatis velit, libero
-            dolorum doloribus culpa.
+            I excel in designing visually appealing and user-friendly websites
+            using tools like Figma, Dribbble, and Canva. My design process
+            involves creating detailed wireframes and prototypes in Figma,
+            drawing inspiration and best practices from Dribbble, and leveraging
+            Canva for stunning graphics and visuals, ensuring a cohesive and
+            engaging user experience.
           </p>
-          <button>Go</button>
+          <button>
+            <a href="#Contact">Go</a>
+          </button>
         </motion.div>
         <motion.div className="box" variants={variants}>
-          <h2>Branding</h2>
+          <h2>Problem Solving</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            tenetur est corrupti non adipisci minus quod consequuntur fugit
-            nostrum enim eaque itaque numquam error veritatis velit, libero
-            dolorum doloribus culpa.
+            I have achieved high ratings on competitive programming platforms
+            such as CodeChef, Codeforces, and LeetCode, demonstrating my
+            exceptional problem-solving skills. My ability to tackle complex
+            algorithms and data structure challenges with efficiency and
+            creativity sets me apart as an excellent problem solver in the
+            coding community.
           </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div className="box" variants={variants}>
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            tenetur est corrupti non adipisci minus quod consequuntur fugit
-            nostrum enim eaque itaque numquam error veritatis velit, libero
-            dolorum doloribus culpa.
-          </p>
-          <button>Go</button>
+          <button>
+            <a href="#Contact">Go</a>
+          </button>
         </motion.div>
       </motion.div>
     </motion.div>

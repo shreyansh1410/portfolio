@@ -11,8 +11,7 @@ const Navbar = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-        >
-        </motion.span>
+        ></motion.span>
         <motion.div
           className="social"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -22,8 +21,8 @@ const Navbar = () => {
           <a href="https://www.linkedin.com/in/shreyansh1410/">
             <img src="/linkedin.png" alt="linkedin" />
           </a>
-          <a href="https://www.instagram.com/shreyxnsh.14/">
-            <img src="/instagram.png" alt="instagram" />
+          <a href="https://www.twitter.com/shreyansh1410/">
+            <img src="/x.png" alt="twitter" />
           </a>
           <a href="https://github.com/shreyansh1410">
             <img src="/github.png" alt="github" />

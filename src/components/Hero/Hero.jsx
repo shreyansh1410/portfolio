@@ -52,14 +52,12 @@ const Hero = () => {
             Full Stack Web Developer
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
-            <a href="#Portfolio">
-              <motion.button variants={textVariants}>
-                See the Latest Works
-              </motion.button>
-            </a>
-            <a href="#Contact">
-              <motion.button variants={textVariants}>Contact Me</motion.button>
-            </a>
+            <motion.button variants={textVariants}>
+              <a href="#Portfolio">See the latest works</a>
+            </motion.button>
+            <motion.button variants={textVariants}>
+              <a href="#Contact">Contact Me</a>
+            </motion.button>
           </motion.div>
           <motion.img
             variants={textVariants}

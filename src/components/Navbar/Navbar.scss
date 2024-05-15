@@ -37,6 +37,9 @@
       a[href*="github"] img {
         filter: invert(1);
       }
+      a[href*="twitter"] img {
+        filter: invert(1);
+      }
     }
   }
 }

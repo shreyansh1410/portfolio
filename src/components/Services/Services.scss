@@ -113,6 +113,10 @@
       flex-direction: column;
       justify-content: space-between;
 
+      h2 {
+        text-align: center;
+      }
+
       @include mobile {
         border: none;
         align-items: center;
