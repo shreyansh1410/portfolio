@@ -30,11 +30,11 @@ const Sidebar = () => {
   };
 
   return (
-    <motion.div className="sidebar" animate={open ? "open" : "closed"}>
+    <motion.div className="sidebar z-99" animate={open ? "open" : "closed"} >
       <motion.div className="bg" variants={variants}>
         <Links />
       </motion.div>
-      <ToggleButton setOpen={setOpen} open={open} />
+      <ToggleButton setOpen={setOpen} open={open}/>
     </motion.div>
   );
 };

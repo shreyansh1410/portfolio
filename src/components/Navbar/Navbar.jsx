@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Sidebar />
-      <div className="wrapper">
+      <div className="wrapper -z-99">
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -20,17 +20,17 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <a href="#">
-            <img src="/linkedin.png" alt="" />
+          <a href="https://www.linkedin.com/in/shreyansh1410/">
+            <img src="/linkedin.png" alt="linkedin" />
           </a>
-          <a href="#">
-            <img src="/instagram.png" alt="" />
+          <a href="https://www.instagram.com/shreyxnsh.14/">
+            <img src="/instagram.png" alt="instagram" />
           </a>
-          <a href="#">
-            <img src="/github.png" alt="" />
+          <a href="https://github.com/shreyansh1410">
+            <img src="/github.png" alt="github" />
           </a>
-          <a href="#">
-            <img src="/dribbble.png" alt="" />
+          <a href="https://shreyansh1410.hashnode.dev/">
+            <img src="/hashnode.png" alt="hashnode" />
           </a>
         </motion.div>
       </div>
