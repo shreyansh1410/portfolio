@@ -116,9 +116,9 @@ function Contact() {
             name="message"
             id="message"
             rows={8}
-            placeholder="Message"
+            placeholder="Type your message"
           ></textarea>
-          <button type="submit">Submit</button>
+          <button type="submit">Send me a message</button>
           {error && "Error"}
           {success && "Success"}
         </motion.form>
