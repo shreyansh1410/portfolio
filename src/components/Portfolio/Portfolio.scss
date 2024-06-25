@@ -101,6 +101,9 @@
           padding: 10px;
           width: 200px;
           cursor: pointer;
+          a{
+            z-index: 3000;
+          }
         }
       }
     }

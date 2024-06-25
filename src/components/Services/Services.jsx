@@ -28,9 +28,9 @@ function Services() {
       className="services"
       variants={variants}
       initial="initial"
-      //   whileInView="animate"
+      whileInView="animate"
       ref={ref}
-      animate={isInView && "animate"}
+      animate={"animate"}
     >
       <motion.div className="textContainer">
         <p>
