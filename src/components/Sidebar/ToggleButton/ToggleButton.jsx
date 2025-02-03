@@ -1,4 +1,3 @@
-import "./ToggleButton.scss";
 import { motion } from "framer-motion";
 
 function ToggleButton({ setOpen, open }) {

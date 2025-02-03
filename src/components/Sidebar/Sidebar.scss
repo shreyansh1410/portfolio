@@ -1,6 +1,8 @@
 @import "../../app.scss";
 .sidebar {
+  margin-right: 20px;
   display: flex;
+  z-index: 3000;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -8,8 +10,9 @@
   color: black;
 
   .bg {
+    margin-left: 50px;
     z-index: 999;
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -17,7 +20,8 @@
     background: white;
 
     @include mobile {
-      width: 200px;
+      width: 175px;
+      margin-left: 10px;
     }
 
     .links {
@@ -41,16 +45,25 @@
   }
 
   button {
-    z-index: 999;
+    margin-left: 50px;
+    z-index: 1000;
     position: fixed;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     position: fixed;
-    top: 25px;
-    left: 25px;
+    top: 29px;
+    left: 26px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+    @include mobile {
+      margin-left: 10px;
+      width: 10px;
+      height: 10px;
+      top: 40px;
+      left: 40px;
+    }
   }
 }

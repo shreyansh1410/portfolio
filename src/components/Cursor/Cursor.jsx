@@ -1,28 +1,30 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import "./Cursor.scss";
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  // Create motion values for the cursor's position
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Create spring-animated versions of the motion values
+  const smoothX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 100, damping: 20 });
 
   useEffect(() => {
-    const mouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const handleMouseMove = (e) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
-    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
-  return (
-    <motion.div
-      className="cursor"
-      animate={{ x: position.x, y: position.y }}
-    ></motion.div>
-  );
+  return <motion.div className="cursor" style={{ x: smoothX, y: smoothY }} />;
 };
 
 export default Cursor;

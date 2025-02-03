@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import "./Portfolio.scss";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, useMotionValue } from "framer-motion";
 
 const items = [
   {
@@ -22,7 +22,7 @@ const items = [
     title: "Netflix GPT",
     img: "/netflixGPT.png",
     desc: "A Netflix like website but with the power of AI, uses OpenAI to get search results that meet your demands",
-    link: "https://netflix-gpt-1410.vercel.app/",
+    link: "https://netflix-gpt.shreyanshshukla.me/",
   },
   {
     id: 4,
@@ -35,25 +35,88 @@ const items = [
 
 const Single = ({ item }) => {
   const ref = useRef();
+  const cardRef = useRef();
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-  });
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+    const card = cardRef.current;
+    const { left, top, width, height } = card.getBoundingClientRect();
+    
+    // Calculate mouse position relative to card
+    const mouseX = e.clientX - left;
+    const mouseY = e.clientY - top;
+    
+    // Convert to percentage (-0.5 to 0.5)
+    const xPercentage = (mouseX / width - 0.5);
+    const yPercentage = (mouseY / height - 0.5);
+    
+    // Calculate rotation (more rotation when mouse is near edges)
+    const xRotation = yPercentage * 20; // Rotate around X axis based on Y position
+    const yRotation = xPercentage * -20; // Rotate around Y axis based on X position
+    
+    // Calculate lift
+    // When mouse is in a corner, that corner should go down and the opposite corner up
+    const corner = {
+      x: Math.sign(xPercentage),
+      y: Math.sign(yPercentage)
+    };
+    
+    // Smoothly update card transform
+    card.style.transform = `
+      perspective(1000px)
+      rotateX(${xRotation}deg)
+      rotateY(${yRotation}deg)
+      scale3d(1.05, 1.05, 1.05)
+    `;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    
+    // Reset transform with transition
+    cardRef.current.style.transform = `
+      perspective(1000px)
+      rotateX(0deg)
+      rotateY(0deg)
+      scale3d(1, 1, 1)
+    `;
+  };
+
+  const handleMouseEnter = () => {
+    if (!cardRef.current) return;
+    
+    // Ensure smooth transitions on mouse enter
+    cardRef.current.style.transition = 'transform 0.2s ease-out';
+  };
 
   return (
     <section>
       <div className="container">
         <div className="wrapper">
-          <div className="imageContainer" ref={ref}>
+          <div
+            ref={cardRef}
+            className="imageContainer"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnter}
+            style={{
+              transition: 'transform 0.2s ease-out',
+              transformStyle: 'preserve-3d',
+              willChange: 'transform',
+            }}
+          >
             <img src={item.img} alt="" />
           </div>
-          <motion.div className="textContainer" style={{ y }}>
+          <div className="textContainer">
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button><a href={item.link} target="_blank" rel="noopener noreferrer">See demo</a></button>
-          </motion.div>
+            <button>
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                See demo
+              </a>
+            </button>
+          </div>
         </div>
       </div>
     </section>

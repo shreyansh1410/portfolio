@@ -1,20 +1,61 @@
 @import "../../app.scss";
 
+@keyframes gradientBorder {
+  0% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(147, 112, 219, 0.4);
+    box-shadow: 0 0 20px rgba(147, 112, 219, 0.2);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes gradientBg {
+  0% {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    background: rgba(147, 112, 219, 0.15);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 100px;
+  background: rgba(12, 12, 29, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 99;
+
+  @include mobile {
+    height: 90px;
+    background: rgba(12, 12, 29, 0.92);
+  }
 
   .wrapper {
     max-width: 1366px;
     margin: auto;
-    margin-top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    padding: 0 2rem;
 
     @include mobile {
       justify-content: flex-end;
-      padding:20px;
+      padding: 0 1.5rem;
     }
 
     span {
@@ -25,21 +66,165 @@
       }
     }
 
-    .social {
-      margin-top: 0;
+    .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 2.5rem;
+      align-items: center;
+      margin-right: 2rem;
 
-      img {
-        width: 30px;
-        height: 30px;
+      @include mobile {
+        display: none;
       }
-      a[href*="github"] img {
-        filter: invert(1);
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: rgba(255, 255, 255, 0.8);
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.95);
+        }
       }
-      a[href*="twitter"] img {
-        filter: invert(1);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 10px;
+
+      @include mobile {
+        gap: 1.25rem;
+        margin-right: 0.5rem;
       }
+
+      .social-links {
+        display: flex;
+        gap: 1.25rem;
+
+        @include mobile {
+          gap: 1rem;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+          transition: transform 0.3s ease;
+          opacity: 0.9;
+
+          @include mobile {
+            width: 22px;
+            height: 22px;
+          }
+
+          &:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+          }
+        }
+
+        a[href*="github"] img {
+          filter: invert(1);
+        }
+      }
+
+      .cv-button {
+        margin-top: -10px;
+        padding: 0.6rem 1.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.08);
+        animation: gradientBorder 3s infinite ease-in-out,
+          gradientBg 3s infinite ease-in-out;
+
+        &:hover {
+          transform: translateY(-2px);
+          animation-play-state: paused;
+          background: rgba(147, 112, 219, 0.2);
+          border-color: rgba(147, 112, 219, 0.4);
+          box-shadow: 0 0 20px rgba(147, 112, 219, 0.2);
+        }
+
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Floating CV button styles
+.floating-cv-button {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    z-index: 1000;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0c0c1d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    animation: mobileGlow 3s infinite ease-in-out;
+
+    @keyframes mobileGlow {
+      0% {
+        box-shadow: 0 4px 15px rgba(147, 112, 219, 0.2);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        box-shadow: 0 4px 20px rgba(147, 112, 219, 0.3);
+        border-color: rgba(147, 112, 219, 0.3);
+      }
+      100% {
+        box-shadow: 0 4px 15px rgba(147, 112, 219, 0.2);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      animation-play-state: paused;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 6px 25px rgba(147, 112, 219, 0.35);
+      border-color: rgba(147, 112, 219, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }

@@ -1,4 +1,3 @@
-import "./Links.scss";
 import { motion } from "framer-motion";
 
 const variants = {
