@@ -1,6 +1,12 @@
 import { useRef } from "react";
 import "./Portfolio.scss";
-import { motion, useScroll, useSpring, useTransform, useMotionValue } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+} from "framer-motion";
 
 const items = [
   {
@@ -10,22 +16,30 @@ const items = [
     desc: "A comprehensive real estate web application developed using the MERN stack, incorporating Socket.io for real-time communication, Prisma ORM for database management, and OpenStreetMap for geolocation services. The platform enables users to engage in real-time chat and view property locations based on specified coordinates.",
     link: "https://urbannest-0n5i.onrender.com/",
   },
+
   {
     id: 2,
+    title: "Cognito",
+    img: "/cognito.png",
+    desc: "A second brain app to manage all your notes, tweets, videos, documents, links in one place",
+    link: "https://cognito.shreyanshshukla.me/",
+  },
+  {
+    id: 3,
     title: "Express Eats",
     img: "/expressEats.png",
     desc: "A food ordering webapp built using Reactjs and styled usign TailwindCSS. Uses your location to show the nearest restaurantd using Swiggy's API",
     link: "https://expresseats.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     title: "Netflix GPT",
     img: "/netflixGPT.png",
     desc: "A Netflix like website but with the power of AI, uses OpenAI to get search results that meet your demands",
     link: "https://netflix-gpt.shreyanshshukla.me/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Do It - A To Do App",
     img: "/doIt.png",
     desc: "A simple to do app in which you can add or remove tasks built using HTML, CSS and vanilla javacript.",
@@ -42,26 +56,26 @@ const Single = ({ item }) => {
 
     const card = cardRef.current;
     const { left, top, width, height } = card.getBoundingClientRect();
-    
+
     // Calculate mouse position relative to card
     const mouseX = e.clientX - left;
     const mouseY = e.clientY - top;
-    
+
     // Convert to percentage (-0.5 to 0.5)
-    const xPercentage = (mouseX / width - 0.5);
-    const yPercentage = (mouseY / height - 0.5);
-    
+    const xPercentage = mouseX / width - 0.5;
+    const yPercentage = mouseY / height - 0.5;
+
     // Calculate rotation (more rotation when mouse is near edges)
     const xRotation = yPercentage * 20; // Rotate around X axis based on Y position
     const yRotation = xPercentage * -20; // Rotate around Y axis based on X position
-    
+
     // Calculate lift
     // When mouse is in a corner, that corner should go down and the opposite corner up
     const corner = {
       x: Math.sign(xPercentage),
-      y: Math.sign(yPercentage)
+      y: Math.sign(yPercentage),
     };
-    
+
     // Smoothly update card transform
     card.style.transform = `
       perspective(1000px)
@@ -73,7 +87,7 @@ const Single = ({ item }) => {
 
   const handleMouseLeave = () => {
     if (!cardRef.current) return;
-    
+
     // Reset transform with transition
     cardRef.current.style.transform = `
       perspective(1000px)
@@ -85,9 +99,9 @@ const Single = ({ item }) => {
 
   const handleMouseEnter = () => {
     if (!cardRef.current) return;
-    
+
     // Ensure smooth transitions on mouse enter
-    cardRef.current.style.transition = 'transform 0.2s ease-out';
+    cardRef.current.style.transition = "transform 0.2s ease-out";
   };
 
   return (
@@ -101,9 +115,9 @@ const Single = ({ item }) => {
             onMouseLeave={handleMouseLeave}
             onMouseEnter={handleMouseEnter}
             style={{
-              transition: 'transform 0.2s ease-out',
-              transformStyle: 'preserve-3d',
-              willChange: 'transform',
+              transition: "transform 0.2s ease-out",
+              transformStyle: "preserve-3d",
+              willChange: "transform",
             }}
           >
             <img src={item.img} alt="" />
